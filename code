@@ -1,0 +1,94 @@
+#include <Adafruit_LiquidCrystal.h>
+const int a=6;
+const int b=7;
+const int leftForward = 8; 
+const int leftBackward = 9; 
+const int rightForward = 10; 
+const int rightBackward = 11;
+int pirState=LOW;
+int val=0;
+int gal=0;
+int c=0;
+int d=0;
+int bulb=13;
+int led=4;
+int tem=A1;
+int temp=A0;
+Adafruit_LiquidCrystal display(0);
+void setup() 
+{
+  pinMode(a,INPUT);
+  pinMode(b,INPUT);
+  pinMode(leftForward , OUTPUT);
+  pinMode(leftBackward , OUTPUT);
+  pinMode(rightForward , OUTPUT);
+  pinMode(rightBackward , OUTPUT);
+  display.begin(16,2);
+  pinMode(bulb,OUTPUT);
+  pinMode(led,OUTPUT);
+  pinMode(tem,INPUT);
+  pinMode(temp,INPUT);
+  Serial.begin(9600);
+}
+void loop()
+{
+  int temvalue = map(((analogRead(tem)-20)*3.04),0,1023,-40,125);
+  int tempvalue = map(((analogRead(temp)-20)*3.04),0,1023,-40,125);
+  Serial.println(temvalue);
+  val = digitalRead(a);
+  gal = digitalRead(b);
+  if (val == HIGH){
+    digitalWrite(bulb, HIGH);
+    display.setCursor(0,0);
+	display.print("welcome ");
+    display.setCursor(0,1);
+    display.print("To Room 1 ");
+    if (pirState == LOW) {
+  	pirState = HIGH;
+    c=1;
+    }
+  }
+    if(temvalue>30 && c==1){
+        digitalWrite(leftForward , HIGH);
+  	    digitalWrite(leftBackward , LOW);
+    }
+    if(temvalue<30 && c==1){
+        digitalWrite(leftForward , LOW);
+  		digitalWrite(leftBackward , LOW);
+    }
+  else if (val == LOW)  {
+    digitalWrite(bulb,LOW);
+    digitalWrite(leftForward , LOW);
+  	digitalWrite(leftBackward , LOW);
+    if (pirState == HIGH) {
+  	pirState = LOW;
+    }
+  }
+   if (gal == HIGH){
+    digitalWrite(led, HIGH);
+    display.setCursor(0,0);
+	display.print(" welcome ");
+    display.setCursor(0,1);
+    display.print(" To Room 2 ");
+    if (pirState == LOW) {
+  	pirState = HIGH;
+     d=1;
+    }
+     if(tempvalue>30 && d==1){
+       digitalWrite(rightForward , HIGH);
+  	   digitalWrite(rightBackward , LOW);
+  }
+       if(temvalue<30 && c==1){
+       digitalWrite(rightForward , LOW);
+  	   digitalWrite(rightBackward , LOW);
+  }
+  else if (gal == LOW){
+    digitalWrite(led, LOW);
+  	digitalWrite(rightForward , LOW);
+  	digitalWrite(rightBackward , LOW);
+    if (pirState == HIGH) {
+  	pirState = LOW;
+    }
+  }
+}
+}
