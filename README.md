@@ -13,38 +13,36 @@ This Arduino-based project implements a room automation system using sensors and
 -> Other basic electronic components (resistors, wires, etc.) <br>
 
 ## Features
-Room 1 Automation:<br>
+### Room 1 Automation:<br>
 
 -> Controls room light based on occupancy. <br>
 -> Activates fan based on temperature threshold. <br>
-Room 2 Automation: <br>
+### Room 2 Automation: <br>
 
 -> Controls LED indicator based on occupancy. <br>
 -> Activates fan based on temperature threshold. <br>
-LCD Display: <br>
+### LCD Display: <br>
 
 -> Shows room status and welcome messages. <br>
-Temperature Monitoring: <br>
+### Temperature Monitoring: <br>
 
 -> Displays real-time temperature values on the LCD. <br>
 Installation <br>
-Hardware Setup: <br>
+### Hardware Setup: <br>
 
 Connect the PIR motion sensors, temperature sensors, relays, LEDs, and LCD display to the Arduino Uno as per the circuit diagram. <br>
-Software Setup: <br>
+### Software Setup: <br>
 
 Install the necessary libraries: <br>
 Adafruit LiquidCrystal library for the LCD display. <br>
 Upload the room_automation.ino sketch to your Arduino Uno using the Arduino IDE. <br>
-Run the System: <br>
+### Run the System: <br>
 
 Power up the Arduino Uno. <br>
 Observe the LCD display for room status and temperature readings. <br>
 Test the automation system by entering and exiting rooms to observe light and fan control based on occupancy and temperature. <br>
-Circuit Diagram <br>
-Include a brief description of the circuit setup and a schematic diagram (if available) to help users replicate the setup. <br>
 
-Usage <br>
+### Usage <br>
 Room 1: <br>
 Enter Room 1 to activate the light and fan based on occupancy and temperature conditions. <br>
 Room 2: <br>
